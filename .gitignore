@@ -1,0 +1,6 @@
+# Reference source folders (not needed in production deployment)
+design reference video/
+location and venue  pictures/
+.DS_Store
+Thumbs.db
+

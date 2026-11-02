@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>ماجد و فاطمه | ١٨ ديسمبر ٢٠٢٦ – روما، إيطاليا</title>
+  <meta name="description" content="نتشرّف بدعوتكم لمشاركتنا حفل عشاء ماجد و فاطمه — يوم الجمعة ١٨ ديسمبر ٢٠٢٦ — روما، إيطاليا" />
+
+  <!-- Google Fonts: Amiri, Scheherazade New, Noto Naskh Arabic, Cormorant Garamond, Tajawal -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Scheherazade+New:wght@400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Lenis Smooth Scroll Engine -->
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+</head>
+<body class="locked-scroll">
+
+  <!-- Ambient Floating Petals Canvas -->
+  <canvas id="petals-canvas" aria-hidden="true"></canvas>
+
+  <!-- Floating Audio Controller (Top Left in RTL) -->
+  <button id="audio-toggle" class="audio-btn" aria-label="تشغيل أو إيقاف الموسيقى" title="الموسيقى الكلاسيكية">
+    <span class="audio-bars">
+      <span></span><span></span><span></span><span></span>
+    </span>
+    <span class="audio-label">الموسيقى</span>
+  </button>
+  <audio id="bg-music" loop preload="auto">
+    <source src="assets/audio/reference-music.mp3" type="audio/mpeg" />
+    <source src="assets/audio/romantic-strings.wav" type="audio/wav" />
+  </audio>
+
+  <!-- Desktop / Mobile Frame Wrapper -->
+  <div class="viewport-wrapper">
+    <main class="invitation-frame" id="invitation-frame">
+
+      <!-- ================================================================
+           1. HERO SECTION & 3D QUILTED CURTAIN REVEAL OVERLAY (00:00 - 00:09)
+           ================================================================ -->
+      <section class="hero-stage" id="hero-stage">
+
+        <!-- Revealed Inner Hero Content (Behind the Curtains) -->
+        <div class="hero-revealed-content">
+          <!-- Quilted Upper Arch & Framed Couple Names -->
+          <div class="hero-upper-arch">
+            <div class="hero-monogram-whisper">M &amp; F</div>
+            <h1 class="hero-couple-names">
+              <span class="name-line">ماجد</span>
+              <span class="amp-line">و</span>
+              <span class="name-line">فاطمه</span>
+            </h1>
+            <p class="hero-date-sub">١٨ ديسمبر ٢٠٢٦</p>
+            <p class="hero-location-sub">روما – إيطاليا</p>
+          </div>
+
+          <!-- 3D Quilted & Embroidered Roman Palace Illustration (Inspired by Venue Photos) -->
+          <div class="hero-palace-showcase">
+            <img
+              src="assets/images/hero_palace_illustration.png"
+              alt="قصر الاحتفال في روما بإطار مطرز بالورود"
+              class="hero-palace-img"
+            />
+          </div>
+
+          <!-- Scroll Down Indicator -->
+          <a href="#section-welcome" class="scroll-prompt" id="scroll-prompt">
+            <span class="scroll-prompt-text">اسحب للأعلى لتصفح الدعوة</span>
+            <span class="scroll-chevron">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </a>
+        </div>
+
+        <!-- 3D QUILTED DRAPERY OVERLAY (Interactive Curtain Reveal) -->
+        <div class="curtain-overlay" id="curtain-overlay" role="button" tabindex="0" aria-label="اضغط لفتح بطاقة الدعوة">
+          <!-- Upper Quilted Scalloped Valance (Stays draped at top and lifts slightly) -->
+          <div class="curtain-valance">
+            <svg class="valance-svg" viewBox="0 0 500 130" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="silkValanceGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#F7E4E6" />
+                  <stop offset="35%" stop-color="#EDD0D4" />
+                  <stop offset="65%" stop-color="#F9ECEE" />
+                  <stop offset="100%" stop-color="#DFB9BF" />
+                </linearGradient>
+                <filter id="quiltedDropShadow" x="-10%" y="-10%" width="120%" height="130%">
+                  <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#5A333A" flood-opacity="0.28"/>
+                </filter>
+              </defs>
+              <!-- Outer Scalloped Swags -->
+              <path d="M0,0 L500,0 L500,55 Q375,125 250,55 Q125,125 0,55 Z" fill="url(#silkValanceGrad)" filter="url(#quiltedDropShadow)" />
+              <!-- Inner Quilted Pleat Lines -->
+              <path d="M0,38 Q125,108 250,38 Q375,108 500,38" fill="none" stroke="#C89DA4" stroke-width="1.5" stroke-dasharray="3,3" />
+              <path d="M0,20 Q125,88 250,20 Q375,88 500,20" fill="none" stroke="#FFF9FA" stroke-width="1.2" opacity="0.8" />
+              <!-- Pearl & Stitched Trim -->
+              <path d="M0,55 Q125,125 250,55 Q375,125 500,55" fill="none" stroke="#B78A91" stroke-width="2.5" />
+              <path d="M0,58 Q125,128 250,58 Q375,128 500,58" fill="none" stroke="#FFF5F6" stroke-width="2" stroke-dasharray="1,6" stroke-linecap="round" />
+            </svg>
+          </div>
+
+          <!-- Left Curtain Panel (Physical left side of screen) -->
+          <div class="curtain-panel curtain-left">
+            <div class="curtain-pleats"></div>
+            <div class="curtain-stitch-edge"></div>
+            <div class="curtain-tassel-tie"></div>
+          </div>
+
+          <!-- Right Curtain Panel (Physical right side of screen) -->
+          <div class="curtain-panel curtain-right">
+            <div class="curtain-pleats"></div>
+            <div class="curtain-stitch-edge"></div>
+            <div class="curtain-tassel-tie"></div>
+          </div>
+
+          <!-- Center Scalloped Monogram Seal ("م و ف" / "M & F") -->
+          <div class="curtain-seal-wrapper" id="curtain-seal">
+            <div class="curtain-seal-card">
+              <svg class="seal-frame-svg" viewBox="0 0 220 270" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="sealBg" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#FFFDFD"/>
+                    <stop offset="50%" stop-color="#FDF2F4"/>
+                    <stop offset="100%" stop-color="#F5DFE3"/>
+                  </linearGradient>
+                  <linearGradient id="goldFoil" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#C9A46A"/>
+                    <stop offset="50%" stop-color="#E6C994"/>
+                    <stop offset="100%" stop-color="#A8824A"/>
+                  </linearGradient>
+                  <filter id="sealShadow" x="-15%" y="-15%" width="130%" height="130%">
+                    <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#3E1F26" flood-opacity="0.32"/>
+                  </filter>
+                </defs>
+                <!-- Scalloped Ornate Outer Shield -->
+                <path filter="url(#sealShadow)" d="M110 12 C135 12, 152 24, 168 32 C184 40, 202 58, 202 85 C202 108, 208 122, 208 135 C208 148, 202 162, 202 185 C202 212, 184 230, 168 238 C152 246, 135 258, 110 258 C85 258, 68 246, 52 238 C36 230, 18 212, 18 185 C18 162, 12 148, 12 135 C12 122, 18 108, 18 85 C18 58, 36 40, 52 32 C68 24, 85 12, 110 12 Z" fill="url(#sealBg)" stroke="#D9B2B9" stroke-width="3"/>
+                <!-- Inner Embossed Filigree Border -->
+                <path d="M110 24 C131 24, 146 34, 160 41 C174 48, 189 63, 189 87 C189 107, 195 120, 195 135 C195 150, 189 163, 189 183 C189 207, 174 222, 160 229 C146 236, 131 246, 110 246 C89 246, 74 236, 60 229 C46 222, 31 207, 31 183 C31 163, 25 150, 25 135 C25 120, 31 107, 31 87 C31 63, 46 48, 60 41 C74 34, 89 24, 110 24 Z" fill="none" stroke="url(#goldFoil)" stroke-width="1.5" stroke-dasharray="4 3"/>
+                <ellipse cx="110" cy="135" rx="70" ry="92" fill="none" stroke="#DFB9C0" stroke-width="1.2"/>
+              </svg>
+              <div class="seal-text-content">
+                <span class="seal-arabic-monogram">م <span class="seal-amp">&amp;</span> ف</span>
+                <span class="seal-latin-sub">M &amp; F</span>
+                <span class="seal-tap-hint">اضغط لفتح الدعوة</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           2. WELCOME SECTION & 3D SWANS LACE DIVIDER (00:09 - 00:12)
+           ================================================================ -->
+      <section class="invitation-section welcome-section reveal-on-scroll" id="section-welcome">
+        <!-- Hanging Wisteria & Rose Lace Header -->
+        <div class="botanical-header-bleed">
+          <img
+            src="assets/images/wisteria_arch_header.png"
+            alt="إطار ورود الوستارية المتدلية"
+            class="wisteria-banner-img"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="section-inner">
+          <p class="section-eyebrow">أهلاً وسهلاً بكم</p>
+          <h2 class="section-title">في ليلة فرحنا</h2>
+          <p class="section-prose">
+            يسعدنا ويشرفنا أن تشاركونا أجمل لحظات العمر في أمسية إيطالية ساحرة تجمعنا بالأحبة والأصدقاء في قلب العاصمة التاريخية روما.
+          </p>
+        </div>
+
+        <!-- Two 3D Embroidered Swans Forming a Heart on Lace Divider -->
+        <div class="swans-divider-bleed">
+          <img
+            src="assets/images/swans_lace_divider.png"
+            alt="فاصل مطرز بجعتين وتطريز الورد"
+            class="swans-divider-img"
+            loading="lazy"
+          />
+        </div>
+      </section>
+
+      <!-- ================================================================
+           3. COUNTDOWN SECTION (00:12 - 00:14)
+           ================================================================ -->
+      <section class="invitation-section countdown-section reveal-on-scroll" id="section-countdown">
+        <div class="section-inner">
+          <p class="section-eyebrow">العد التنازلي</p>
+          <h2 class="section-title">الوقت المتبقي لليلة العمر</h2>
+
+          <div class="countdown-medallions" id="countdown-timer" aria-live="polite">
+            <!-- Days -->
+            <div class="medallion-item">
+              <div class="medallion-ring">
+                <div class="medallion-inner">
+                  <span class="medallion-number" id="cd-days">٠٤٦</span>
+                </div>
+              </div>
+              <span class="medallion-label">يوماً</span>
+            </div>
+
+            <!-- Hours -->
+            <div class="medallion-item">
+              <div class="medallion-ring">
+                <div class="medallion-inner">
+                  <span class="medallion-number" id="cd-hours">٢٠</span>
+                </div>
+              </div>
+              <span class="medallion-label">ساعة</span>
+            </div>
+
+            <!-- Minutes -->
+            <div class="medallion-item">
+              <div class="medallion-ring">
+                <div class="medallion-inner">
+                  <span class="medallion-number" id="cd-minutes">٠٠</span>
+                </div>
+              </div>
+              <span class="medallion-label">دقيقة</span>
+            </div>
+          </div>
+
+          <p class="countdown-date-note">الجمعة • ١٨ ديسمبر ٢٠٢٦ • روما، إيطاليا</p>
+        </div>
+
+        <!-- Embroidered Pearl & Rose Lace Trim Divider -->
+        <div class="lace-ribbon-divider" aria-hidden="true">
+          <svg viewBox="0 0 600 70" preserveAspectRatio="none" class="lace-svg">
+            <path d="M0,35 Q30,5 60,35 T120,35 T180,35 T240,35 T300,35 T360,35 T420,35 T480,35 T540,35 T600,35" fill="none" stroke="#8C9E8A" stroke-width="2"/>
+            <path d="M0,35 Q30,65 60,35 T120,35 T180,35 T240,35 T300,35 T360,35 T420,35 T480,35 T540,35 T600,35" fill="none" stroke="#D4A5AE" stroke-width="2"/>
+            <line x1="0" y1="35" x2="600" y2="35" stroke="#C9A46A" stroke-width="1.5" stroke-dasharray="2,8" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           4. OFFICIAL CLIENT ARABIC INVITATION SECTION (00:14 - 00:16)
+           (VERBATIM CLIENT TEXT)
+           ================================================================ -->
+      <section class="invitation-section official-invite-section reveal-on-scroll" id="section-invitation">
+        <div class="section-inner">
+          <div class="royal-decree-card">
+            <div class="decree-corner decree-tl"></div>
+            <div class="decree-corner decree-tr"></div>
+            <div class="decree-corner decree-bl"></div>
+            <div class="decree-corner decree-br"></div>
+
+            <!-- Basmala / Ornamental Flourish -->
+            <div class="ornament-flourish" aria-hidden="true">
+              <svg width="160" height="28" viewBox="0 0 160 28" fill="none">
+                <path d="M10 14 H62 M98 14 H150" stroke="#C9A46A" stroke-width="1"/>
+                <circle cx="80" cy="14" r="5" stroke="#C9A46A" stroke-width="1.5"/>
+                <circle cx="68" cy="14" r="2.5" fill="#D4A5AE"/>
+                <circle cx="92" cy="14" r="2.5" fill="#D4A5AE"/>
+              </svg>
+            </div>
+
+            <!-- Exact Client Text preserved word-for-word -->
+            <div class="verbatim-invitation-text">
+              <p class="inv-line inv-honored">نتشرّف بدعوتكم لمشاركتنا</p>
+              <p class="inv-line inv-event-type">حفل عشاء</p>
+              <h2 class="inv-line inv-couple-names">ماجد و فاطمه</h2>
+
+              <div class="inv-small-divider" aria-hidden="true">✦ ❖ ✦</div>
+
+              <p class="inv-line inv-blessing">وذلك بمشيئة الله تعالى</p>
+              <p class="inv-line inv-day">يوم الجمعة</p>
+              <p class="inv-line inv-date" dir="rtl">18 ديسمبر 2026</p>
+
+              <div class="inv-small-divider" aria-hidden="true">✦</div>
+
+              <p class="inv-line inv-city">روما – إيطاليا،</p>
+
+              <p class="inv-line inv-closing">وبحضوركم تكتمل فرحتنا.</p>
+            </div>
+
+            <div class="ornament-flourish bottom-flourish" aria-hidden="true">
+              <svg width="160" height="28" viewBox="0 0 160 28" fill="none">
+                <path d="M10 14 H62 M98 14 H150" stroke="#C9A46A" stroke-width="1"/>
+                <circle cx="80" cy="14" r="5" stroke="#C9A46A" stroke-width="1.5"/>
+                <circle cx="68" cy="14" r="2.5" fill="#D4A5AE"/>
+                <circle cx="92" cy="14" r="2.5" fill="#D4A5AE"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           5. VENUE & LOCATION SECTION (00:16 - 00:18)
+           (Generic "روما – إيطاليا" + Enhanced Venue Showcase)
+           ================================================================ -->
+      <section class="invitation-section venue-section reveal-on-scroll" id="section-venue">
+        <div class="section-inner">
+          <p class="section-eyebrow">موقع الاحتفال</p>
+          <h2 class="section-title">حفل العشاء والاستقبال</h2>
+          <p class="venue-location-headline">روما – إيطاليا</p>
+          <p class="venue-sub-details">يوم الجمعة • ١٨ ديسمبر ٢٠٢٦ • الساعة ٧:٠٠ مساءً</p>
+
+          <!-- Enhanced Venue Illustration & Photo Carousel (From Client's 5 Venue Photos) -->
+          <div class="venue-gallery-showcase">
+            <div class="venue-featured-frame">
+              <img
+                id="venue-active-img"
+                src="assets/images/venue_fountain_garden_enhanced.png"
+                alt="إطلالة حديقة النافورة ومقر الحفل في روما – إيطاليا"
+                class="venue-main-img"
+              />
+              <div class="venue-caption-badge" id="venue-active-caption">
+                حديقة النافورة التاريخية – روما، إيطاليا
+              </div>
+            </div>
+
+            <!-- Interactive Thumbnail Switcher for the 3 Enhanced Venue Views -->
+            <div class="venue-thumbnails" role="tablist" aria-label="صور مكان الحفل في روما">
+              <button
+                type="button"
+                class="venue-thumb active"
+                data-src="assets/images/venue_fountain_garden_enhanced.png"
+                data-caption="حديقة النافورة التاريخية عند الغروب – روما، إيطاليا"
+                aria-selected="true"
+              >
+                <img src="assets/images/venue_fountain_garden_enhanced.png" alt="حديقة النافورة" />
+                <span>حديقة النافورة</span>
+              </button>
+
+              <button
+                type="button"
+                class="venue-thumb"
+                data-src="assets/images/venue_pavilion_watercolor.png"
+                data-caption="الجناح الكلاسيكي والحدائق الإيطالية – روما، إيطاليا"
+                aria-selected="false"
+              >
+                <img src="assets/images/venue_pavilion_watercolor.png" alt="الجناح الكلاسيكي" />
+                <span>الجناح الإيطالي</span>
+              </button>
+
+              <button
+                type="button"
+                class="venue-thumb"
+                data-src="assets/images/venue_columns_enhanced.png"
+                data-caption="المدخل الروماني ذو الأعمدة العريقة – روما، إيطاليا"
+                aria-selected="false"
+              >
+                <img src="assets/images/venue_columns_enhanced.png" alt="المدخل التاريخي" />
+                <span>البوابة الرومانية</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Action Buttons matching Reference Video (00:16): Open in Maps + Add to Calendar -->
+          <div class="action-buttons-stack">
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Via+Merulana+248+Rome+Italy"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="luxury-pill-btn"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <span>افتح الموقع في الخرائط</span>
+            </a>
+
+            <button type="button" id="add-calendar-btn" class="luxury-pill-btn secondary-pill-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+              <span>أضف الموعد إلى التقويم</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           6. DRESS CODE SECTION (00:17 - 00:19)
+           ================================================================ -->
+      <section class="invitation-section dresscode-section reveal-on-scroll" id="section-dresscode">
+        <div class="section-inner">
+          <p class="section-eyebrow">الأناقة والمظهر</p>
+          <h2 class="section-title">قواعد اللباس</h2>
+          <p class="dresscode-badge">سهرة رسمية فاخرة • Black Tie</p>
+          <p class="section-prose">
+            تكتمل أناقة الأمسية بإطلالتكم الراقية بملابس السهرة الرسمية الفاخرة التي تليق بأجواء القصور الرومانية الكلاسيكية.
+          </p>
+
+          <!-- Color Palette Swatches -->
+          <div class="dresscode-palette" aria-label="درجات الألوان المقترحة">
+            <span class="swatch" style="background:#231F20" title="أسود كلاسيكي"></span>
+            <span class="swatch" style="background:#D9B2B9" title="وردي مغبر"></span>
+            <span class="swatch" style="background:#E8D3B9" title="شامبين ذهبي"></span>
+            <span class="swatch" style="background:#9CAF98" title="أخضر ميرمية"></span>
+            <span class="swatch" style="background:#8D5B65" title="عنابي ناعم"></span>
+          </div>
+
+          <div class="dresscode-illustration-wrap">
+            <img
+              src="assets/images/dress_code_illustration.png"
+              alt="رسم توضيحي لأناقة السهرة الرسمية"
+              class="dresscode-img"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           7. OUR STORY / ROMANTIC QUOTE ARCH SECTION (00:19 - 00:21)
+           ================================================================ -->
+      <section class="invitation-section story-section reveal-on-scroll" id="section-story">
+        <div class="section-inner">
+          <div class="wisteria-arch-card">
+            <p class="section-eyebrow">حكايتنا</p>
+            <h2 class="section-title">بداية فصل جديد</h2>
+            <p class="section-prose story-prose">
+              حين تلاقت القلوب، أدركنا أن أجمل القصص هي التي تُكتب بحضور من نحب. وها نحن نجمع عائلتينا وأحبتنا في مدينة الخلود روما، لنحتفل معاً ببداية رحلتنا المشتركة في ليلة تخلّدها الذكريات.
+            </p>
+            <div class="story-signature">ماجد &amp; فاطمه</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           8. EVENING TIMELINE SECTION (00:21 - 00:24)
+           ================================================================ -->
+      <section class="invitation-section timeline-section reveal-on-scroll" id="section-timeline">
+        <div class="section-inner">
+          <p class="section-eyebrow">تفاصيل الأمسية</p>
+          <h2 class="section-title">برنامج حفل العشاء</h2>
+
+          <div class="timeline-track">
+            <!-- Center Dashed Line with Pearl Nodes -->
+            <div class="timeline-center-line" aria-hidden="true"></div>
+
+            <!-- Item 1 -->
+            <div class="timeline-row">
+              <div class="timeline-icon-col">
+                <div class="timeline-illust-circle">
+                  <!-- Palace Arch SVG -->
+                  <svg viewBox="0 0 64 64" fill="none" class="tl-svg">
+                    <path d="M12 52H52M16 52V28L32 14L48 28V52" stroke="#7A4953" stroke-width="1.8"/>
+                    <path d="M26 52V38C26 34.6863 28.6863 32 32 32C35.3137 32 38 34.6863 38 38V52" stroke="#C9A46A" stroke-width="1.8"/>
+                    <circle cx="32" cy="24" r="3" stroke="#C9A46A" stroke-width="1.5"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="timeline-pearl" aria-hidden="true"></div>
+              <div class="timeline-text-col">
+                <span class="tl-time">٦:٣٠ مساءً</span>
+                <h3 class="tl-heading">استقبال الضيوف والترحيب</h3>
+                <p class="tl-desc">الوصول إلى البوابة التاريخية واستقبال الأحبة في حديقة النافورة</p>
+              </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="timeline-row">
+              <div class="timeline-icon-col">
+                <div class="timeline-illust-circle">
+                  <!-- Floral Bouquet & Rings SVG -->
+                  <svg viewBox="0 0 64 64" fill="none" class="tl-svg">
+                    <circle cx="27" cy="34" r="10" stroke="#C9A46A" stroke-width="1.8"/>
+                    <circle cx="37" cy="34" r="10" stroke="#7A4953" stroke-width="1.8"/>
+                    <path d="M35 22L37 18L41 20L39 24Z" fill="#D4A5AE" stroke="#7A4953" stroke-width="1.2"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="timeline-pearl" aria-hidden="true"></div>
+              <div class="timeline-text-col">
+                <span class="tl-time">٧:٣٠ مساءً</span>
+                <h3 class="tl-heading">زفّة وترحيب ماجد و فاطمه</h3>
+                <p class="tl-desc">إطلالة العروسين وسط أنغام الموسيقى الكلاسيكية والأجواء الاحتفالية</p>
+              </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="timeline-row">
+              <div class="timeline-icon-col">
+                <div class="timeline-illust-circle">
+                  <!-- Dinner Cloche / Fine Dining SVG -->
+                  <svg viewBox="0 0 64 64" fill="none" class="tl-svg">
+                    <path d="M12 44H52M16 44C16 33 23 25 32 25C41 25 48 33 48 44" stroke="#7A4953" stroke-width="1.8"/>
+                    <circle cx="32" cy="21" r="3" stroke="#C9A46A" stroke-width="1.8"/>
+                    <path d="M20 48H44" stroke="#C9A46A" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="timeline-pearl" aria-hidden="true"></div>
+              <div class="timeline-text-col">
+                <span class="tl-time">٨:٣٠ مساءً</span>
+                <h3 class="tl-heading">حفل العشاء الفاخر</h3>
+                <p class="tl-desc">مأدبة عشاء إيطالية راقية على ضوء الشموع في القاعة الملكية</p>
+              </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="timeline-row">
+              <div class="timeline-icon-col">
+                <div class="timeline-illust-circle">
+                  <!-- Celebration & Music SVG -->
+                  <svg viewBox="0 0 64 64" fill="none" class="tl-svg">
+                    <path d="M24 44V22L44 18V40" stroke="#7A4953" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="20" cy="44" r="4" stroke="#C9A46A" stroke-width="1.8"/>
+                    <circle cx="40" cy="40" r="4" stroke="#C9A46A" stroke-width="1.8"/>
+                    <path d="M16 18L18 14M48 14L51 11M32 12V8" stroke="#D4A5AE" stroke-width="1.6" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="timeline-pearl" aria-hidden="true"></div>
+              <div class="timeline-text-col">
+                <span class="tl-time">١٠:٣٠ مساءً</span>
+                <h3 class="tl-heading">السهرة والاحتفال وختام الأمسية</h3>
+                <p class="tl-desc">تقطيع كعكة الاحتفال وأمسية فنية مبهجة بصحبة الأحبة</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="timeline-footer-note">
+            يُقام حفل العشاء والاستقبال في أجواء شتوية دافئة ومميزة في قلب العاصمة الإيطالية روما.
+          </p>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           9. WARM WISHES / PRESENCE GIFT CARD (00:26 - 00:27)
+           ================================================================ -->
+      <section class="invitation-section gifts-section reveal-on-scroll" id="section-wishes">
+        <div class="section-inner">
+          <div class="gilded-botanical-frame">
+            <div class="frame-flora-corner flora-tl"></div>
+            <div class="frame-flora-corner flora-tr"></div>
+            <div class="frame-flora-corner flora-bl"></div>
+            <div class="frame-flora-corner flora-br"></div>
+
+            <p class="section-eyebrow">محبتكم أغلى هدية</p>
+            <h2 class="section-title">حضوركم هو بهجتنا</h2>
+            <p class="section-prose">
+              إن تشريفكم لنا وتجشمكم عناء السفر إلى روما لمشاركتنا هذه الليلة المباركة هو أجمل وأغلى هدية نعتز بها. وبحضوركم تكتمل فرحتنا وتزدان أمسيتنا.
+            </p>
+          </div>
+
+          <!-- Wax-Sealed Envelope Icon leading into RSVP (00:27) -->
+          <div class="wax-envelope-divider" aria-hidden="true">
+            <svg width="110" height="76" viewBox="0 0 110 76" fill="none">
+              <rect x="5" y="8" width="100" height="62" rx="4" fill="#F8E7EA" stroke="#C9A46A" stroke-width="1.5"/>
+              <path d="M5 10 L55 44 L105 10" fill="#F2D7DC" stroke="#C9A46A" stroke-width="1.5"/>
+              <path d="M5 68 L40 38 M105 68 L70 38" stroke="#D9B2B9" stroke-width="1.2"/>
+              <circle cx="55" cy="42" r="11" fill="#A65E6E" stroke="#854251" stroke-width="1.5"/>
+              <circle cx="55" cy="42" r="8" fill="none" stroke="#E6C994" stroke-width="0.8" stroke-dasharray="2,2"/>
+              <text x="55" y="45" text-anchor="middle" fill="#FFF7F8" font-size="7" font-family="serif">م&amp;ف</text>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           10. RSVP SECTION (00:27 - 00:29)
+           ================================================================ -->
+      <section class="invitation-section rsvp-section reveal-on-scroll" id="section-rsvp">
+        <div class="section-inner">
+          <p class="section-eyebrow">تأكيد الحضور</p>
+          <h2 class="section-title">نسعد بتأكيد تشريفكم</h2>
+          <p class="rsvp-deadline">نرجو التكرّم بتأكيد الحضور قبل ١ نوفمبر ٢٠٢٦</p>
+
+          <form id="rsvp-form" class="rsvp-form" novalidate>
+            <!-- Full Name -->
+            <div class="form-group">
+              <label for="guest-name" class="form-label">الاسم الكامل <span class="req">*</span></label>
+              <input
+                type="text"
+                id="guest-name"
+                name="guestName"
+                class="form-input"
+                placeholder="الرجاء كتابة الاسم الثلاثي الكامل..."
+                required
+              />
+            </div>
+
+            <!-- Attendance Radio -->
+            <div class="form-group">
+              <span class="form-label">هل ستشاركوننا الحضور؟ <span class="req">*</span></span>
+              <div class="radio-group">
+                <label class="radio-option">
+                  <input type="radio" name="attendance" value="yes" checked />
+                  <span class="custom-radio"></span>
+                  <span class="radio-text">نعم، يشرفني ويسعدني الحضور بكل سرور</span>
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="attendance" value="no" />
+                  <span class="custom-radio"></span>
+                  <span class="radio-text">أعتذر عن عدم التمكن من الحضور مع خالص التبريكات</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Number of Guests -->
+            <div class="form-group" id="guests-count-group">
+              <label for="guests-count" class="form-label">عدد الحضور</label>
+              <select id="guests-count" name="guestsCount" class="form-input form-select">
+                <option value="1">شخص واحد (١)</option>
+                <option value="2" selected>شخصان (٢)</option>
+                <option value="3">ثلاثة أشخاص (٣)</option>
+                <option value="4">أربعة أشخاص (٤)</option>
+              </select>
+            </div>
+
+            <!-- Dietary Notes -->
+            <div class="form-group">
+              <label for="dietary-notes" class="form-label">ملاحظات خاصة بالضيافة أو الحساسية الغذائية</label>
+              <input
+                type="text"
+                id="dietary-notes"
+                name="dietaryNotes"
+                class="form-input"
+                placeholder="اختياري: أي تفضيلات أو متطلبات غذائية خاصة..."
+              />
+            </div>
+
+            <!-- Transportation in Rome -->
+            <div class="form-group">
+              <span class="form-label">هل ترغبون في خدمة المواصلات الخاصة من مقر الإقامة في روما؟</span>
+              <div class="radio-group">
+                <label class="radio-option">
+                  <input type="radio" name="transport" value="yes" checked />
+                  <span class="custom-radio"></span>
+                  <span class="radio-text">نعم، أرغب في الاستفادة من خدمة المواصلات المخصصة</span>
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="transport" value="no" />
+                  <span class="custom-radio"></span>
+                  <span class="radio-text">لا، سأحضر بوسيلتي الخاصة</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Personal Message to Majed & Fatima -->
+            <div class="form-group">
+              <label for="guest-message" class="form-label">كلمة تهنئة للعروسين (ماجد و فاطمه)</label>
+              <textarea
+                id="guest-message"
+                name="guestMessage"
+                rows="3"
+                class="form-input form-textarea"
+                placeholder="اكتبوا تهنئتكم أو أمنياتكم القلبية للعروسين..."
+              ></textarea>
+            </div>
+
+            <!-- Submit Pill Button -->
+            <button type="submit" class="luxury-pill-btn submit-rsvp-btn" id="rsvp-submit-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <line x1="22" y1="2" x2="11" y2="13"/>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              </svg>
+              <span>إرسال تأكيد الحضور</span>
+            </button>
+          </form>
+
+          <!-- Confirmation State after Submitting -->
+          <div id="rsvp-success" class="rsvp-success-box" hidden>
+            <div class="success-icon">✦</div>
+            <h3 class="success-title">شكرًا جزيلاً لتأكيدكم</h3>
+            <p class="success-text" id="rsvp-success-msg">
+              تم استلام ردكم بنجاح. نتطلع بشوق للقائكم في روما يوم الجمعة ١٨ ديسمبر ٢٠٢٦، وبحضوركم تكتمل فرحتنا.
+            </p>
+            <button type="button" id="rsvp-reset-btn" class="text-link-btn">تعديل الرد</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           11. FOOTER SECTION WITH VINTAGE PALACE ENGRAVING (00:29)
+           ================================================================ -->
+      <footer class="invitation-footer reveal-on-scroll">
+        <div class="footer-inner">
+          <h2 class="footer-couple-names">ماجد و فاطمه</h2>
+          <p class="footer-date-place">يوم الجمعة • ١٨ ديسمبر ٢٠٢٦ • روما – إيطاليا</p>
+
+          <div class="footer-engraving-wrap">
+            <img
+              src="assets/images/footer_engraving_palace.png"
+              alt="نقش فني كلاسيكي لقصر الحفل في روما"
+              class="footer-engraving-img"
+              loading="lazy"
+            />
+          </div>
+
+          <p class="footer-closing-wish">وبحضوركم تكتمل فرحتنا</p>
+          <p class="footer-credit">صُمم بكل حب للاحتفال بليلة ماجد و فاطمه • ٢٠٢٦</p>
+        </div>
+      </footer>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

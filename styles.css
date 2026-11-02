@@ -1,0 +1,1544 @@
+/* ==========================================================================
+   VALINOR WEDDING INVITATION — MOBILE-FIRST 3D QUILTED & EMBROIDERED DESIGN
+   Majed & Fatima | 18 December 2026 | Rome, Italy
+   ========================================================================== */
+
+:root {
+  --bg-ivory: #FDF6F6;
+  --bg-blush-soft: #F9EBEE;
+  --bg-blush-silk: #F2D7DC;
+  --bg-blush-deep: #E5BFC7;
+  --rose-dusty: #C9949F;
+  --rose-burgundy: #6D3B47;
+  --text-charcoal: #3B2329;
+  --text-muted: #76545C;
+  --gold-primary: #C59B5F;
+  --gold-light: #E5C99B;
+  --sage-muted: #8FA18E;
+
+  --font-display-ar: 'Amiri', 'Scheherazade New', serif;
+  --font-body-ar: 'Noto Naskh Arabic', 'Tajawal', serif;
+  --font-sans-ar: 'Tajawal', sans-serif;
+  --font-latin: 'Cormorant Garamond', Georgia, serif;
+
+  --ease-silk: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-curtain: cubic-bezier(0.64, 0.04, 0.26, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  font-size: 16px;
+  background-color: #EFE1E4;
+  color: var(--text-charcoal);
+}
+
+/* Lenis Smooth Scroll Standard Styles */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-body-ar);
+  background-color: var(--bg-ivory);
+  color: var(--text-charcoal);
+  overflow-x: hidden;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+/* Lock scrolling until the user opens the 3D curtains */
+body.locked-scroll {
+  overflow: hidden;
+  height: 100vh;
+  height: 100dvh;
+  touch-action: none;
+}
+
+/* ==========================================================================
+   MOBILE-FIRST CONTAINER ARCHITECTURE
+   100% full-bleed on phones; centered 440px luxury phone frame on wider screens
+   ========================================================================== */
+.viewport-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 20%, #F7E8EB 0%, #E7D0D5 100%);
+}
+
+.invitation-frame {
+  width: 100%;
+  max-width: 440px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: var(--bg-ivory);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 70px rgba(59, 35, 41, 0.18);
+}
+
+@media (min-width: 520px) {
+  .invitation-frame {
+    box-shadow:
+      0 28px 80px rgba(59, 35, 41, 0.24),
+      0 0 0 1px rgba(197, 155, 95, 0.35);
+  }
+}
+
+/* Ambient Floating Rose Petals Canvas */
+#petals-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 45;
+}
+
+/* ==========================================================================
+   FLOATING AUDIO BUTTON
+   ========================================================================== */
+.audio-btn {
+  position: fixed;
+  top: max(14px, env(safe-area-inset-top, 14px));
+  left: 16px;
+  z-index: 90;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(197, 155, 95, 0.55);
+  background: rgba(253, 246, 246, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--rose-burgundy);
+  font-family: var(--font-sans-ar);
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(90, 51, 58, 0.12);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.audio-btn:active {
+  transform: scale(0.95);
+}
+
+.audio-bars {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+}
+
+.audio-bars span {
+  width: 2.2px;
+  height: 4px;
+  background-color: var(--gold-primary);
+  border-radius: 2px;
+  transition: height 0.2s ease;
+}
+
+.audio-btn.playing .audio-bars span:nth-child(1) {
+  animation: soundBar 0.8s ease-in-out infinite alternate;
+}
+.audio-btn.playing .audio-bars span:nth-child(2) {
+  animation: soundBar 0.65s ease-in-out 0.15s infinite alternate;
+}
+.audio-btn.playing .audio-bars span:nth-child(3) {
+  animation: soundBar 0.9s ease-in-out 0.3s infinite alternate;
+}
+.audio-btn.playing .audio-bars span:nth-child(4) {
+  animation: soundBar 0.75s ease-in-out 0.1s infinite alternate;
+}
+
+@keyframes soundBar {
+  0% { height: 3px; }
+  100% { height: 12px; }
+}
+
+/* ==========================================================================
+   1. HERO STAGE & 3D QUILTED CURTAIN REVEAL (00:00 - 00:09)
+   Strictly locked to 100dvh so text is dead-center in the open curtain space
+   and the 3D Roman palace + fountain + roses are 100% visible below it.
+   ========================================================================== */
+.hero-stage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background:
+    radial-gradient(circle at 50% 24%, #FFFDFD 0%, #FDF6F6 60%, #FDF6F6 100%);
+  overflow: hidden;
+}
+
+/* Soft bottom feathering so Hero melts seamlessly into Welcome section */
+.hero-stage::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 36px;
+  background: linear-gradient(to bottom, rgba(253, 246, 246, 0) 0%, #FDF6F6 100%);
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Inner Hero Revealed Content */
+.hero-revealed-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 86px;
+  padding-bottom: 0;
+  text-align: center;
+}
+
+/* Upper Quilted Arch with Couple Names — Centered Vertically & Horizontally */
+.hero-upper-arch {
+  position: relative;
+  z-index: 4;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 24px;
+  max-width: 320px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(16px) scale(0.96);
+  filter: blur(4px);
+  transition:
+    opacity 1.25s var(--ease-silk) 0.45s,
+    transform 1.25s var(--ease-silk) 0.45s,
+    filter 1.25s var(--ease-silk) 0.45s;
+}
+
+.hero-stage.curtains-opened .hero-upper-arch {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+.hero-monogram-whisper {
+  font-family: var(--font-latin);
+  font-size: 0.78rem;
+  letter-spacing: 0.28em;
+  color: var(--gold-primary);
+  margin-bottom: 2px;
+  text-transform: uppercase;
+}
+
+.hero-couple-names {
+  font-family: var(--font-display-ar);
+  font-weight: 700;
+  color: var(--text-charcoal);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.15;
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.95);
+}
+
+.hero-couple-names .name-line {
+  font-size: 2.3rem;
+  letter-spacing: 0.01em;
+}
+
+.hero-couple-names .amp-line {
+  font-family: var(--font-display-ar);
+  font-size: 1.35rem;
+  color: var(--gold-primary);
+  margin: -4px 0;
+}
+
+.hero-date-sub {
+  margin-top: 6px;
+  font-family: var(--font-body-ar);
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: var(--rose-burgundy);
+  letter-spacing: 0.04em;
+}
+
+.hero-location-sub {
+  font-family: var(--font-sans-ar);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+
+/* 3D Quilted & Embroidered Palace Illustration — Occupies bottom 56% of Hero screen */
+.hero-palace-showcase {
+  width: 100%;
+  height: 56%;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 3;
+  padding: 0;
+  transform: scale(1.05) translateY(10px);
+  transition: transform 2.4s var(--ease-silk);
+}
+
+.hero-stage.curtains-opened .hero-palace-showcase {
+  transform: scale(1) translateY(0);
+}
+
+.hero-palace-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 68%;
+  display: block;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 14%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 14%, black 92%, transparent 100%);
+}
+
+/* Scroll Prompt floating cleanly at bottom of Hero */
+.scroll-prompt {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  z-index: 10;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  padding: 5px 16px 3px;
+  border-radius: 999px;
+  background: rgba(253, 246, 246, 0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(197, 155, 95, 0.35);
+  text-decoration: none;
+  color: var(--rose-burgundy);
+  font-family: var(--font-sans-ar);
+  font-size: 0.76rem;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.9s ease 1.4s, transform 0.9s ease 1.4s;
+}
+
+.hero-stage.curtains-opened .scroll-prompt {
+  opacity: 0.95;
+  transform: translateX(-50%) translateY(0);
+}
+
+.scroll-chevron {
+  animation: gentleBounce 2s infinite ease-in-out;
+  line-height: 0;
+}
+
+@keyframes gentleBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+/* ==========================================================================
+   3D QUILTED DRAPERY CURTAIN OVERLAY (00:00 - 00:07)
+   ========================================================================== */
+.curtain-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 25;
+  cursor: pointer;
+  user-select: none;
+  overflow: hidden;
+}
+
+/* Allow clicks/scrolls to pass through after curtains open while keeping side drapes visible */
+.hero-stage.curtains-opened .curtain-overlay {
+  pointer-events: none;
+}
+
+/* Top Quilted Scalloped Valance */
+.curtain-valance {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 108px;
+  z-index: 28;
+  transition: transform 2.1s var(--ease-curtain);
+}
+
+.valance-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.hero-stage.curtains-opened .curtain-valance {
+  transform: translateY(-10px);
+}
+
+/* Left & Right 3D Quilted Silk Curtain Panels */
+.curtain-panel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 52%;
+  z-index: 26;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #F6E2E6 0px,
+      #FDF2F4 12px,
+      #EBCAD0 26px,
+      #D9B0B8 34px,
+      #F6E2E6 44px
+    );
+  box-shadow:
+    0 15px 45px rgba(58, 28, 35, 0.35),
+    inset 0 0 30px rgba(255, 255, 255, 0.55);
+  transition:
+    transform 2.4s var(--ease-curtain),
+    border-radius 2.4s var(--ease-curtain),
+    box-shadow 2.4s var(--ease-curtain);
+  will-change: transform;
+  mask-image: linear-gradient(to bottom, black 0%, black 88%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 88%, transparent 100%);
+}
+
+.curtain-left {
+  left: 0;
+  transform-origin: top left;
+  border-right: 3px solid #D1A5AE;
+}
+
+.curtain-right {
+  right: 0;
+  transform-origin: top right;
+  border-left: 3px solid #D1A5AE;
+}
+
+/* Inner vertical quilted stitching along the curtain edges */
+.curtain-stitch-edge {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 18px;
+  background-image: radial-gradient(circle, #FFF8F9 1.6px, transparent 2px);
+  background-size: 6px 12px;
+  opacity: 0.85;
+}
+
+.curtain-left .curtain-stitch-edge {
+  right: 6px;
+  border-left: 1px dashed #B5838E;
+}
+
+.curtain-right .curtain-stitch-edge {
+  left: 6px;
+  border-right: 1px dashed #B5838E;
+}
+
+/* Subtle horizontal gathered tie-back shadow when opened */
+.curtain-pleats {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(90, 45, 54, 0.14) 0%,
+      rgba(255, 255, 255, 0.15) 35%,
+      rgba(90, 45, 54, 0.08) 70%,
+      rgba(58, 28, 35, 0.25) 100%
+    );
+}
+
+/* When curtains open: part gracefully to the sides like tied-back palace drapes */
+.hero-stage.curtains-opened .curtain-left {
+  transform: translateX(-78%) skewX(-5deg);
+  border-bottom-right-radius: 160px 320px;
+  box-shadow: 6px 8px 24px rgba(58, 28, 35, 0.18);
+}
+
+.hero-stage.curtains-opened .curtain-right {
+  transform: translateX(78%) skewX(5deg);
+  border-bottom-left-radius: 160px 320px;
+  box-shadow: -6px 8px 24px rgba(58, 28, 35, 0.18);
+}
+
+/* Center Scalloped Monogram Seal ("م & ف") */
+.curtain-seal-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 1.55s cubic-bezier(0.55, 0.05, 0.28, 1),
+    opacity 1.35s ease;
+}
+
+.curtain-seal-card {
+  position: relative;
+  width: 196px;
+  height: 242px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: sealFloat 3.4s ease-in-out infinite;
+}
+
+@keyframes sealFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-5px) scale(1.015); }
+}
+
+.seal-frame-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.seal-text-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 22px;
+}
+
+.seal-arabic-monogram {
+  font-family: var(--font-display-ar);
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: var(--rose-burgundy);
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+}
+
+.seal-amp {
+  font-family: var(--font-latin);
+  font-size: 1.65rem;
+  font-style: italic;
+  color: var(--gold-primary);
+  margin: 0 2px;
+}
+
+.seal-latin-sub {
+  font-family: var(--font-latin);
+  font-size: 0.85rem;
+  letter-spacing: 0.24em;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.seal-tap-hint {
+  margin-top: 12px;
+  font-family: var(--font-sans-ar);
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: var(--rose-burgundy);
+  background: rgba(242, 215, 220, 0.65);
+  border: 1px solid rgba(197, 155, 95, 0.45);
+  padding: 3px 12px;
+  border-radius: 99px;
+  animation: pulseHint 2s infinite ease-in-out;
+}
+
+@keyframes pulseHint {
+  0%, 100% { opacity: 0.75; transform: scale(0.98); }
+  50% { opacity: 1; transform: scale(1.03); }
+}
+
+.hero-stage.curtains-sliding-seal .curtain-seal-wrapper,
+.hero-stage.curtains-opened .curtain-seal-wrapper {
+  transform: translateX(135%) rotate(6deg);
+  opacity: 0;
+}
+
+/* ==========================================================================
+   COMMON SECTION LAYOUT & STAGGERED SCROLL REVEAL ANIMATIONS
+   ========================================================================== */
+.invitation-section {
+  position: relative;
+  width: 100%;
+  padding: 34px 0;
+  text-align: center;
+}
+
+.section-inner {
+  padding: 0 26px;
+  max-width: 400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 3;
+}
+
+.section-eyebrow {
+  font-family: var(--font-sans-ar);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--gold-primary);
+  margin-bottom: 6px;
+}
+
+.section-title {
+  font-family: var(--font-display-ar);
+  font-size: 1.95rem;
+  font-weight: 700;
+  color: var(--text-charcoal);
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+
+.section-prose {
+  font-family: var(--font-body-ar);
+  font-size: 1.02rem;
+  color: var(--text-muted);
+  line-height: 1.85;
+}
+
+/* Smooth Staggered Scroll Reveal Transitions */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(26px);
+  filter: blur(2px);
+  transition:
+    opacity 1.05s var(--ease-silk),
+    transform 1.05s var(--ease-silk),
+    filter 1.05s var(--ease-silk);
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Staggered child animations inside visible sections */
+.reveal-on-scroll .section-eyebrow,
+.reveal-on-scroll .section-title,
+.reveal-on-scroll .section-prose,
+.reveal-on-scroll .medallion-item,
+.reveal-on-scroll .timeline-row {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.85s var(--ease-silk),
+    transform 0.85s var(--ease-silk);
+}
+
+.reveal-on-scroll.is-visible .section-eyebrow {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.08s;
+}
+
+.reveal-on-scroll.is-visible .section-title {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.18s;
+}
+
+.reveal-on-scroll.is-visible .section-prose {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.28s;
+}
+
+.reveal-on-scroll.is-visible .medallion-item:nth-child(1) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.15s;
+}
+.reveal-on-scroll.is-visible .medallion-item:nth-child(2) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.27s;
+}
+.reveal-on-scroll.is-visible .medallion-item:nth-child(3) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.39s;
+}
+
+.reveal-on-scroll.is-visible .timeline-row:nth-child(2) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.12s;
+}
+.reveal-on-scroll.is-visible .timeline-row:nth-child(3) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.24s;
+}
+.reveal-on-scroll.is-visible .timeline-row:nth-child(4) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.36s;
+}
+.reveal-on-scroll.is-visible .timeline-row:nth-child(5) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.48s;
+}
+
+/* ==========================================================================
+   2. WELCOME SECTION & SWANS LACE DIVIDER (00:09 - 00:12)
+   Seamless integration: Welcome text sits naturally inside the open wisteria
+   arch and flows directly into the 3D embroidered swans with zero seams.
+   ========================================================================== */
+.welcome-section {
+  padding-top: 0;
+  padding-bottom: 8px;
+}
+
+.botanical-header-bleed,
+.swans-divider-bleed {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.wisteria-banner-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  mix-blend-mode: multiply;
+  animation: subtleBreath 7s ease-in-out infinite;
+}
+
+/* Position the Welcome text right inside the open lower arch of wisteria_arch_header */
+.welcome-section .section-inner {
+  margin-top: -112px;
+  padding: 0 54px;
+  position: relative;
+  z-index: 3;
+}
+
+.swans-divider-bleed {
+  margin-top: 12px;
+}
+
+.swans-divider-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  mix-blend-mode: multiply;
+  animation: subtleBreath 8s ease-in-out 1s infinite;
+}
+
+@keyframes subtleBreath {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-3px) scale(1.008); }
+}
+
+/* ==========================================================================
+   3. COUNTDOWN MEDALLIONS SECTION (00:12 - 00:14)
+   ========================================================================== */
+.countdown-section {
+  padding-top: 8px;
+  padding-bottom: 24px;
+}
+
+.countdown-medallions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin: 22px 0 18px;
+}
+
+.medallion-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 3D Quilted & Pearl-Stitched Circular Medallions (matching 00:13) */
+.medallion-ring {
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  padding: 6px;
+  background: linear-gradient(145deg, #F9E5E8, #DFB9C1);
+  box-shadow:
+    0 8px 20px rgba(90, 45, 54, 0.14),
+    inset 0 2px 4px rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.medallion-ring::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(197, 155, 95, 0.65);
+  pointer-events: none;
+}
+
+.medallion-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #FFFDFD 0%, #F6E0E4 100%);
+  border: 1px solid rgba(212, 165, 174, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.medallion-number {
+  font-family: var(--font-display-ar);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--rose-burgundy);
+  line-height: 1;
+}
+
+.medallion-label {
+  font-family: var(--font-sans-ar);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.countdown-date-note {
+  font-family: var(--font-sans-ar);
+  font-size: 0.82rem;
+  color: var(--gold-primary);
+  font-weight: 500;
+}
+
+.lace-ribbon-divider {
+  width: 100%;
+  margin-top: 24px;
+  opacity: 0.85;
+}
+
+.lace-svg {
+  width: 100%;
+  height: 44px;
+  display: block;
+}
+
+/* ==========================================================================
+   4. VERBATIM CLIENT ARABIC INVITATION CARD (00:14 - 00:16)
+   ========================================================================== */
+.official-invite-section {
+  padding: 20px 0 34px;
+}
+
+.royal-decree-card {
+  position: relative;
+  background: linear-gradient(180deg, #FFFDFD 0%, #FDF2F4 100%);
+  border: 1.5px solid rgba(197, 155, 95, 0.55);
+  border-radius: 24px;
+  padding: 36px 22px;
+  box-shadow:
+    0 16px 40px rgba(90, 45, 54, 0.09),
+    inset 0 0 0 6px rgba(253, 246, 246, 0.9),
+    inset 0 0 0 7px rgba(212, 165, 174, 0.45);
+}
+
+/* Ornate Gold Filigree Corners */
+.decree-corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-color: var(--gold-primary);
+  border-style: solid;
+  opacity: 0.75;
+}
+
+.decree-tl { top: 12px; left: 12px; border-width: 2px 0 0 2px; border-top-left-radius: 6px; }
+.decree-tr { top: 12px; right: 12px; border-width: 2px 2px 0 0; border-top-right-radius: 6px; }
+.decree-bl { bottom: 12px; left: 12px; border-width: 0 0 2px 2px; border-bottom-left-radius: 6px; }
+.decree-br { bottom: 12px; right: 12px; border-width: 0 2px 2px 0; border-bottom-right-radius: 6px; }
+
+.ornament-flourish {
+  margin-bottom: 18px;
+  display: flex;
+  justify-content: center;
+}
+
+.bottom-flourish {
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+.verbatim-invitation-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.inv-line {
+  margin: 0;
+}
+
+.inv-honored {
+  font-family: var(--font-body-ar);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.inv-event-type {
+  font-family: var(--font-display-ar);
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--rose-burgundy);
+  margin-top: 2px;
+}
+
+.inv-couple-names {
+  font-family: var(--font-display-ar);
+  font-size: 2.55rem;
+  font-weight: 700;
+  color: var(--text-charcoal);
+  line-height: 1.35;
+  margin: 8px 0 6px;
+  background: linear-gradient(135deg, #3B2329 0%, #7A4350 55%, #A67942 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.inv-small-divider {
+  font-size: 0.85rem;
+  color: var(--gold-primary);
+  letter-spacing: 0.3em;
+  margin: 6px 0;
+}
+
+.inv-blessing {
+  font-family: var(--font-body-ar);
+  font-size: 1.05rem;
+  color: var(--text-muted);
+}
+
+.inv-day {
+  font-family: var(--font-display-ar);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-charcoal);
+}
+
+.inv-date {
+  font-family: var(--font-display-ar);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--rose-burgundy);
+  letter-spacing: 0.03em;
+}
+
+.inv-city {
+  font-family: var(--font-display-ar);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-charcoal);
+  margin: 4px 0;
+}
+
+.inv-closing {
+  font-family: var(--font-display-ar);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--gold-primary);
+  margin-top: 10px;
+}
+
+/* ==========================================================================
+   5. VENUE & LOCATION SHOWCASE SECTION (00:16 - 00:18)
+   ========================================================================== */
+.venue-location-headline {
+  font-family: var(--font-display-ar);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--rose-burgundy);
+  margin-bottom: 4px;
+}
+
+.venue-sub-details {
+  font-family: var(--font-sans-ar);
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 22px;
+}
+
+.venue-gallery-showcase {
+  margin-bottom: 24px;
+}
+
+.venue-featured-frame {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid rgba(197, 155, 95, 0.55);
+  box-shadow: 0 14px 34px rgba(59, 35, 41, 0.14);
+  background-color: #F6E6E9;
+  aspect-ratio: 4 / 3;
+}
+
+.venue-main-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.35s ease, transform 0.6s ease;
+}
+
+.venue-caption-badge {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  left: 10px;
+  padding: 7px 12px;
+  border-radius: 12px;
+  background: rgba(253, 246, 246, 0.9);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-family: var(--font-sans-ar);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-charcoal);
+  border: 1px solid rgba(197, 155, 95, 0.4);
+}
+
+.venue-thumbnails {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.venue-thumb {
+  background: #FFFDFD;
+  border: 1.5px solid rgba(212, 165, 174, 0.55);
+  border-radius: 12px;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.25s ease;
+  font-family: var(--font-sans-ar);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.venue-thumb img {
+  width: 100%;
+  height: 54px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.venue-thumb.active {
+  border-color: var(--gold-primary);
+  background: #FDF0F3;
+  color: var(--rose-burgundy);
+  box-shadow: 0 4px 12px rgba(197, 155, 95, 0.22);
+  transform: translateY(-2px);
+}
+
+/* Pill Action Buttons (Open in Maps / Add to Calendar) */
+.action-buttons-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.luxury-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 13px 22px;
+  border-radius: 999px;
+  border: 1.5px solid var(--gold-primary);
+  background: linear-gradient(180deg, #FFFDFD 0%, #F9E9EC 100%);
+  color: var(--text-charcoal);
+  font-family: var(--font-sans-ar);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(90, 45, 54, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.luxury-pill-btn:hover,
+.luxury-pill-btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(90, 45, 54, 0.14);
+  background: linear-gradient(180deg, #FFFDFD 0%, #F4D8DE 100%);
+}
+
+/* ==========================================================================
+   6. DRESS CODE SECTION (00:17 - 00:19)
+   ========================================================================== */
+.dresscode-badge {
+  display: inline-block;
+  padding: 5px 18px;
+  border-radius: 999px;
+  background: #F6E2E6;
+  border: 1px solid rgba(197, 155, 95, 0.45);
+  font-family: var(--font-sans-ar);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--rose-burgundy);
+  margin-bottom: 14px;
+}
+
+.dresscode-palette {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 18px 0 22px;
+}
+
+.swatch {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #FFFDFD;
+  box-shadow: 0 3px 10px rgba(59, 35, 41, 0.18);
+}
+
+.dresscode-illustration-wrap {
+  width: 100%;
+  margin-top: 8px;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.dresscode-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  mix-blend-mode: multiply;
+}
+
+/* ==========================================================================
+   7. OUR STORY / ROMANTIC ARCH SECTION (00:19 - 00:21)
+   ========================================================================== */
+.wisteria-arch-card {
+  position: relative;
+  padding: 42px 24px 34px;
+  border-radius: 180px 180px 24px 24px;
+  background:
+    radial-gradient(circle at 50% 0%, #F9E6EA 0%, #FFFDFD 75%);
+  border: 1.5px solid rgba(212, 165, 174, 0.65);
+  box-shadow:
+    0 14px 36px rgba(90, 45, 54, 0.08),
+    inset 0 0 0 5px #FDF6F6,
+    inset 0 0 0 6px rgba(197, 155, 95, 0.35);
+}
+
+.story-prose {
+  font-size: 1.05rem;
+  margin-bottom: 18px;
+}
+
+.story-signature {
+  font-family: var(--font-display-ar);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--gold-primary);
+}
+
+/* ==========================================================================
+   8. TIMELINE SECTION (00:21 - 00:24)
+   ========================================================================== */
+.timeline-track {
+  position: relative;
+  margin: 30px 0 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Vertical Dashed Center Line */
+.timeline-center-line {
+  position: absolute;
+  top: 16px;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1.5px;
+  background-image: linear-gradient(to bottom, var(--gold-primary) 50%, transparent 50%);
+  background-size: 2px 10px;
+  opacity: 0.7;
+}
+
+.timeline-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 28px 1fr;
+  align-items: center;
+  gap: 8px;
+}
+
+.timeline-icon-col {
+  display: flex;
+  justify-content: center;
+}
+
+.timeline-illust-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #FFFDFD;
+  border: 1.5px solid rgba(212, 165, 174, 0.75);
+  box-shadow: 0 6px 16px rgba(90, 45, 54, 0.09);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tl-svg {
+  width: 40px;
+  height: 40px;
+}
+
+/* 3D Pearl Heart Node on Timeline Axis */
+.timeline-pearl {
+  width: 14px;
+  height: 14px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #FFFFFF, #F2D7DC 65%, #C9949F 100%);
+  border: 1.5px solid var(--gold-primary);
+  box-shadow: 0 2px 6px rgba(90, 45, 54, 0.25);
+  position: relative;
+  z-index: 2;
+}
+
+.timeline-text-col {
+  text-align: right;
+  padding-right: 4px;
+}
+
+.tl-time {
+  display: inline-block;
+  font-family: var(--font-display-ar);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--rose-burgundy);
+}
+
+.tl-heading {
+  font-family: var(--font-sans-ar);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-charcoal);
+  margin: 2px 0 4px;
+}
+
+.tl-desc {
+  font-family: var(--font-sans-ar);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.timeline-footer-note {
+  font-family: var(--font-body-ar);
+  font-size: 0.92rem;
+  font-style: italic;
+  color: var(--text-muted);
+  margin-top: 12px;
+}
+
+/* ==========================================================================
+   9. WARM WISHES / GILDED BOTANICAL FRAME (00:26 - 00:27)
+   ========================================================================== */
+.gilded-botanical-frame {
+  position: relative;
+  padding: 36px 24px;
+  background: #FFFDFD;
+  border: 2px solid var(--gold-primary);
+  border-radius: 16px;
+  box-shadow:
+    0 12px 32px rgba(90, 45, 54, 0.08),
+    inset 0 0 0 6px #FDF6F6,
+    inset 0 0 0 7.5px rgba(197, 155, 95, 0.45);
+}
+
+.wax-envelope-divider {
+  margin-top: 28px;
+  display: flex;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   10. RSVP FORM SECTION (00:27 - 00:29)
+   ========================================================================== */
+.rsvp-deadline {
+  font-family: var(--font-sans-ar);
+  font-size: 0.84rem;
+  color: var(--rose-burgundy);
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.rsvp-form {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: rgba(255, 253, 253, 0.85);
+  padding: 24px 20px;
+  border-radius: 22px;
+  border: 1px solid rgba(212, 165, 174, 0.6);
+  box-shadow: 0 12px 30px rgba(90, 45, 54, 0.07);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.form-label {
+  font-family: var(--font-sans-ar);
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--text-charcoal);
+}
+
+.form-label .req {
+  color: var(--rose-burgundy);
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(212, 165, 174, 0.75);
+  background: #FFFDFD;
+  color: var(--text-charcoal);
+  font-family: var(--font-sans-ar);
+  font-size: 0.9rem;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 0 3px rgba(197, 155, 95, 0.18);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 84px;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 2px;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-family: var(--font-sans-ar);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.radio-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.custom-radio {
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  border: 1.5px solid var(--gold-primary);
+  background: #FFFDFD;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.custom-radio::after {
+  content: '';
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--rose-burgundy);
+  transform: scale(0);
+  transition: transform 0.2s ease;
+}
+
+.radio-option input:checked + .custom-radio::after {
+  transform: scale(1);
+}
+
+.radio-option input:checked ~ .radio-text {
+  color: var(--text-charcoal);
+  font-weight: 600;
+}
+
+.submit-rsvp-btn {
+  margin-top: 8px;
+  background: linear-gradient(135deg, #7A4350 0%, #5B2E38 100%);
+  color: #FFFDFD;
+  border-color: var(--gold-primary);
+}
+
+.submit-rsvp-btn:hover,
+.submit-rsvp-btn:active {
+  background: linear-gradient(135deg, #8B4E5C 0%, #6D3B47 100%);
+  color: #FFFDFD;
+}
+
+.rsvp-success-box {
+  background: #FFFDFD;
+  border: 1.5px solid var(--gold-primary);
+  border-radius: 22px;
+  padding: 32px 22px;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(90, 45, 54, 0.1);
+}
+
+.success-icon {
+  font-size: 1.8rem;
+  color: var(--gold-primary);
+  margin-bottom: 8px;
+}
+
+.success-title {
+  font-family: var(--font-display-ar);
+  font-size: 1.65rem;
+  color: var(--rose-burgundy);
+  margin-bottom: 8px;
+}
+
+.success-text {
+  font-family: var(--font-body-ar);
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.text-link-btn {
+  background: none;
+  border: none;
+  color: var(--gold-primary);
+  font-family: var(--font-sans-ar);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   11. FOOTER SECTION WITH VINTAGE PALACE ENGRAVING (00:29)
+   ========================================================================== */
+.invitation-footer {
+  padding: 28px 24px 48px;
+  text-align: center;
+  border-top: 1px solid rgba(212, 165, 174, 0.35);
+  background: linear-gradient(180deg, var(--bg-ivory) 0%, #F7E5E9 100%);
+}
+
+.footer-couple-names {
+  font-family: var(--font-display-ar);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text-charcoal);
+}
+
+.footer-date-place {
+  font-family: var(--font-sans-ar);
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+  margin-bottom: 20px;
+}
+
+.footer-engraving-wrap {
+  max-width: 330px;
+  margin: 0 auto 20px;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.footer-engraving-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  mix-blend-mode: multiply;
+}
+
+.footer-closing-wish {
+  font-family: var(--font-display-ar);
+  font-size: 1.35rem;
+  color: var(--rose-burgundy);
+  margin-bottom: 8px;
+}
+
+.footer-credit {
+  font-family: var(--font-sans-ar);
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  opacity: 0.75;
+}
